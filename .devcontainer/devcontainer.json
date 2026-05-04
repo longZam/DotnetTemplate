@@ -1,0 +1,42 @@
+{
+	// 프로덕션에서는 불러올 이미지에 대해 digest를 사용하라.
+	"image": "mcr.microsoft.com/devcontainers/dotnet:2-10.0-noble",
+	// 의존성 추가
+	"features": {
+		"ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {},
+		"ghcr.io/devcontainers-extra/features/zsh-plugins:0": {},
+		"ghcr.io/devcontainers/features/dotnet:2.5.0": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+
+	// 컨테이너의 포트를 호스트 컴퓨터 포트에 바인딩한다.
+	// "forwardPorts": [5000, 5001],
+	// "portsAttributes": {
+	//		"5001": {
+	//			"protocol": "https"
+	//		}
+	// }
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "dotnet restore",
+
+	// IDE 따위에서의 설정값을 미리 세팅해준다.
+	// vscode의 extensions도 미리 설치해줄 수 있다.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit"
+			],
+			"settings": {
+				"dotnet.defaultSolution": "Microsoft.DotNet.Docker.slnx",
+                "remote.autoForwardPorts": true,
+                "remote.autoForwardPortsSource": "hybrid",
+                "remote.otherPortsAttributes": {
+                    "onAutoForward": "ignore"
+                }
+			}
+		}
+	},
+	
+	"remoteUser": "vscode"
+}
